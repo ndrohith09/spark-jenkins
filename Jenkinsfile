@@ -6,11 +6,11 @@ pipeline{
     }
 
     stages {
-        stage ('git clone') {
-            steps {
-                git 'https://github.com/ndrohith09/spark-jenkins.git'
-            }
-        }
+        // stage ('git clone') {
+        //     steps {
+        //         git 'https://github.com/ndrohith09/spark-jenkins.git'
+        //     }
+        // }
         stage ('Test file'){
             steps {
                 sh 'python spark.py' 
@@ -24,7 +24,7 @@ pipeline{
 
         stage ('Login'){
             steps {
-                sh 'echo $DOCEKRHUB_CREDINTIALS | docker login -U $DOCKERHUB_CREDINTIALS_USR --password-stdin' 
+                sh 'echo $DOCEKRHUB_CREDINTIALS_PSW | docker login -U $DOCKERHUB_CREDINTIALS_USR --password-stdin' 
                 // sh 'echo $DOCEKRHUB_CREDINTIALS | docker login --username=${DOCKERHUB_CREDINTIALS.username} --password=${DOCKERHUB_CREDINTIALS.password}' 
             }
         }
@@ -35,15 +35,15 @@ pipeline{
             }
         }
 
-        stage ('logout'){
-            steps {
-                sh 'docker logout' 
-            }
+        // stage ('logout'){
+        //     steps {
+        //         sh 'docker logout' 
+        //     }
+        // }
+    }
+    post {
+        always {
+            sh 'docker logout'
         }
     }
-    // post {
-    //     always {
-    //         sh 'docker logout'
-    //     }
-    // }
 }
