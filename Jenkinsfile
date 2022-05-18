@@ -34,10 +34,16 @@ pipeline{
                 sh 'docker push ndrohith09/spark-jenkins:latest .' 
             }
         }
-    }
-    post {
-        always {
-            sh 'docker logout'
+
+        stage ('logout'){
+            steps {
+                sh 'docker logout' 
+            }
         }
     }
+    // post {
+    //     always {
+    //         sh 'docker logout'
+    //     }
+    // }
 }
