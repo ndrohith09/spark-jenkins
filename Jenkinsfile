@@ -47,3 +47,44 @@ pipeline{
     //     }
     // }
 }
+
+// pipeline {
+//   environment {
+//     imagename = "ndrohith09/spark"
+//     registryCredential = 'ndrohith09'
+//     dockerImage = ''
+//   }
+//   agent any
+//   stages {
+//     stage('Cloning Git') {
+//       steps {
+//         git([url: 'https://github.com/ndrohith09/spark-jenkins.git', branch: 'master', credentialsId: 'ndrohith09'])
+ 
+//       }
+//     }
+//     stage('Building image') {
+//       steps{
+//         script {
+//           dockerImage = docker.build imagename
+//         }
+//       }
+//     }
+//     stage('Deploy Image') {
+//       steps{
+//         script {
+//           docker.withRegistry( '', registryCredential ) {
+//             dockerImage.push("$BUILD_NUMBER")
+//              dockerImage.push('latest')
+//           }
+//         }
+//       }
+//     }
+//     stage('Remove Unused docker image') {
+//       steps{
+//         sh "docker rmi $imagename:$BUILD_NUMBER"
+//          sh "docker rmi $imagename:latest"
+ 
+//       }
+//     }
+//   }
+// }
