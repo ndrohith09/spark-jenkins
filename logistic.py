@@ -9,8 +9,8 @@ dataframe = pandas.read_csv(url, names=names)
 array = dataframe.values
 X = array[:,0:8]
 Y = array[:,8]
-test_size = 0.36
-# test_size = 0.33
+# test_size = 0.e36
+test_size = 0.33
 seed = 7
 X_train, X_test, Y_train, Y_test = model_selection.train_test_split(X, Y, test_size=test_size, random_state=seed)
 
