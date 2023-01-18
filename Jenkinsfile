@@ -2,7 +2,7 @@ pipeline{
     agent { label '(built-in)' } 
 
     environment {
-        DOCKERHUB_CREDINTIALS = credentials('dockerhub')
+        DOCKERHUB_CREDINTIALS = credentials('docker')
     }
 
     stages {
