@@ -1,4 +1,4 @@
-# Save Model Using joblib package
+# Save Model Using joblib pack
 import pandas
 from sklearn import model_selection
 from sklearn.linear_model import LogisticRegression
